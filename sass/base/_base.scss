@@ -1,0 +1,32 @@
+
+*
+*::after
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html {
+    // This defines what 1rem is 10/16x100 we get 62.5% 1rem is 10px in this case we did the calculation so its for user easiness 
+    font-size: 68.75%;
+
+    @include respond(tab-land) {
+        font-size: 50%;
+    }
+
+    @include respond(tab-port) {
+        font-size: 56.25%;
+    }
+
+    // @include respond(big-desk) {
+    //     font-size: 75%;
+    // }
+}
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}

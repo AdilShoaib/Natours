@@ -1,0 +1,161 @@
+.navigation {
+
+    &__input {
+       display: none;
+    }
+
+    &__label {
+       background: white;
+       border-radius: 50%;
+       position: fixed;
+       top: 6rem;
+       right: 6rem;
+       width: 7rem;
+       height: 7rem;
+       z-index: 500;
+       box-shadow: rgba(0, 0, 0 , 1);
+       text-align: center;
+       cursor: pointer;
+
+       @include respond(tab-port) {
+        top: 4rem;
+        right: 4rem;
+      }
+
+      @include respond(phone) {
+        top: 3.8rem;
+        right: 7rem;
+    }
+
+    }
+
+    &__background {
+        width: 6rem;
+        height: 6rem;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background: radial-gradient($color-medium-green, $color-dark-green);
+        border-radius: 50%;
+    
+        // transform: scale(100);
+        z-index: 150;
+        transition: all .8s cubic-bezier(0.65, 0, 0.35, 1);
+
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+          }
+
+        @include respond(phone) {
+            top: 4rem;
+            right: 7rem;
+        }
+    
+    }
+
+    &__nav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 200;
+        opacity: 0;
+        transition: all .8s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    }
+
+    &__list {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    &__items {
+        margin: 1rem;
+
+    }
+
+    &__links {
+        display: inline-block;
+        padding: 2rem 2rem;
+        font-size: 3.2rem;
+        // letter-spacing: 0.1rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(120deg , transparent 0% , transparent 50% , $color-white 50%);
+        background-size: 250%;
+        transition: all .5s;
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-medium-green;
+            transform: translateX(1rem);
+        }
+    }
+
+    &__input:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__input:checked ~ &__nav {
+        width: 100%;
+        opacity: 1;
+    }
+    //functionality
+
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: #333;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .4s;
+        }
+
+        &::before {top: -.8rem;}
+        &::after {top: .8rem;}
+    }
+
+    &__input:hover + &__label &__icon::before {
+        top: -1rem;
+    }
+
+    &__input:hover + &__label &__icon::after {
+        top: 1rem;
+    }
+
+    &__input:checked + &__label &__icon {
+        background-color: transparent;
+    }
+
+    &__input:checked + &__label &__icon::before {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+    &__input:checked + &__label &__icon::after {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+}

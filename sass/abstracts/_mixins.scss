@@ -1,0 +1,55 @@
+@mixin clearfix  {
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+    
+}
+
+// MEDIA QUERIES MANAGER
+/*
+0 - 600px         Phone
+600 - 900px       Tablet-portrait
+900 - 1200px      Tablet-landscape
+[1200 - 1800px]   is where our normal styles apply
+1800px + :        Big desktop
+*/
+
+
+// It is also a method for media queries
+/* @mixin respond-phone {
+    @media(max-width: 600px)
+    
+}
+*/
+
+//This method is better than before one
+/* 
+$breakpoint arguement choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+converting px's to em's is better in media queries
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media(max-width: 37.5rem) { @content } //width: 600px//
+    }
+
+    @if $breakpoint == tab-port {
+        @media(max-width: 56.25em) { @content }  //width: 900px//
+    }
+
+    @if $breakpoint == tab-land {
+        @media(max-width: 75em) { @content }  //width: 1200px//
+    }
+
+    @if $breakpoint == big-desk {
+        @media(min-width: 112.5em) { @content }  //width: 1800px//
+    }
+}
+

@@ -1,0 +1,63 @@
+body {
+    font-family: "lato" , sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $color-grey-dark;
+}
+.primary-heading {
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+
+    &--text {
+        display: block;
+        font-size: 6.2rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft 1s ease-in;
+
+        @include respond(tab-port) {
+            font-size: 4.5rem;
+            letter-spacing: 1.2rem;
+        }
+    }
+
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 14.8px;
+        animation: moveInRight 1s ease-in;
+
+        @include respond(tab-port) {
+            font-size: 2rem;
+            letter-spacing: .2rem;
+        }
+    }
+}
+
+.heading-primary {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .2rem;
+    font-size: 3.6rem;
+    background: linear-gradient(to right, $color-light-green, $color-dark-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 2.6rem;
+        letter-spacing: .1rem;
+      }
+
+    &:hover {
+        transform: translateY(-3px);
+        text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+        
+    }
+}

@@ -1,0 +1,204 @@
+.card {
+    //Functionality
+    perspective: 150rem;
+    position: relative;
+    -moz-perspective: 150rem;
+    height: 50rem;
+
+    &__side {
+        color: #fff;
+        font-size: 2rem;
+        height: 50rem;
+        box-shadow: .1rem .5rem .95rem rgba($color-black, .2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        backface-visibility: hidden;
+        transition: all .5s;
+
+
+        &--front {
+            background-color: #fff;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+            
+            &-1 {
+                background-image: linear-gradient(to right bottom , $color-yellow-light, $color-orange-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom , $color-light-green, $color-dark-green);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom , $color-blue-light , $color-purple-dark);;
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    //Front side styling
+    &__pictures {
+        background: center center/cover;
+        background-blend-mode: soft-light;
+        height: 23rem;
+        clip-path: polygon(0 0 , 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient($color-yellow-light, $color-orange-dark),url(../img/nat-5.jpg);
+
+        }
+
+        &--2 {
+            background-image: linear-gradient($color-medium-green, $color-dark-green),url(../img/nat-6.jpg);
+
+        }
+
+        &--3 {
+            background-image: linear-gradient($color-blue-light, $color-purple-dark),url(../img/nat-7.jpg);
+
+        }
+    }
+
+    &__heading {
+        padding: 3rem;
+         font-size: 3rem;
+         font-weight: 300;
+         text-align: right;
+         text-transform: uppercase;
+         color: #fff;
+         position: absolute;
+         top: 5rem;
+         right: 2rem;
+         width: 75%;
+          
+    }
+
+    &__heading-span {
+        padding: 1.1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background: linear-gradient($color-yellow-light, $color-orange-dark);
+        }
+
+        &--2 {
+            background: linear-gradient($color-medium-green, $color-light-green);
+        }
+
+        &--3 {
+            background: linear-gradient($color-blue-light, $color-purple-dark);
+        }
+    }
+
+    &__details {
+         padding: 2rem;
+         align-items: center;
+         text-align: center;
+         ul {
+             list-style: none;
+             color: #444;
+             width: 70%;
+             //center trick
+             margin: 0 auto;
+
+             li {
+                 text-align: center;
+                 font-size: 1.4rem;
+                 padding: 1rem;
+
+                 &:not(:last-child) {
+                     border-bottom: 1px solid #eee;
+                     //can't use width because border bottom is attached to the upper text if use width: 70% it will shorten the border bottom and aligned the upper attached text to center and distort it from center towards left//
+                 }
+             }
+         }
+    }
+
+    //Back side styling
+    
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+    &__price-box-text {
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    &__price-box-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+    @include respond(tab-port) {
+        height: auto;
+        background-color: $color-white;
+        box-shadow: .1rem .5rem .95rem rgba($color-black, .2);
+        
+
+        &__side {
+            height: auto;
+            border-radius: 3px;
+            position: relative;
+            box-shadow: none;
+    
+            &--back {
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+    
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+
+        //Back side styling
+        
+        &__content {
+            position: relative;
+            top: 0%;
+            left: 0%;
+            transform: translate(0);
+            width: 100%;
+            padding: 5rem 0;
+        }
+    
+        &__price-box {
+            margin-bottom: 6rem;
+        }
+
+        &__price-box-text {
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+    
+        &__price-box-value {
+            font-size: 6rem;
+            font-weight: 100;
+        }
+
+    }
+}
